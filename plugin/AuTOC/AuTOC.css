@@ -1,0 +1,292 @@
+/* Variables */
+#AuTOC {
+	--autoc-main-color: #0088FF;
+	--autoc-active-color:#ff0000;
+	--autoc-text-color: #fff;
+	--autoc-text-size: 13px;
+	--autoc-border-radius: 3px;
+	--autoc-max-width: 150px; /* Can be max-content to fit the content */
+}
+
+#AuTOC,
+#AuTOC * {
+	box-sizing: border-box;
+}
+
+
+
+/* TOC position */
+#AuTOC{
+	display:block;
+
+	position: absolute;
+	overflow: hidden;
+
+	z-index: 1000;
+
+	font-size: var(--autoc-text-size);
+	color: var(--autoc-text-color);
+}
+
+#AuTOC.box.vertical {
+	top: 0;
+	left: 0;
+	width: max-content;
+	max-width: var(--autoc-max-width);
+}
+
+#AuTOC.plain.vertical {
+	top: 0;
+	left: 0;
+	width: var(--autoc-max-width);
+	height: max-content;
+
+	border-radius: var(--autoc-border-radius);
+}
+
+#AuTOC.horizontal {
+	bottom: 0;
+	width: 100%;
+}
+
+#AuTOC.vertical.horizontal-position-right {
+	left: auto;
+	right: 0;
+}
+
+#AuTOC.vertical-position-top {
+	top: 0;
+	bottom: auto;
+}
+
+#AuTOC.vertical-position-bottom {
+	top: auto;
+	bottom: 3px;
+}
+
+
+
+/* Layout - General */
+#AuTOC ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+
+	width:100%;
+}
+
+#AuTOC li {
+	padding: 0;
+	margin: 0;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
+/* Layout - Vertical */
+#AuTOC.vertical ul {
+	flex-direction: column;
+	align-items: center;
+}
+
+#AuTOC.vertical:not(.sub-always-visible) > ul ul {
+	display: none;
+}
+
+#AuTOC.vertical ul li.active-parent ul {
+	display: flex;
+}
+
+#AuTOC.vertical li {
+	width: 100%;
+}
+
+#AuTOC.vertical.links-align-left li {
+	align-items: flex-start;
+}
+
+#AuTOC.vertical.links-align-right li {
+	align-items: flex-end;
+}
+
+
+
+/* Layout - Horizontal */
+#AuTOC.horizontal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#AuTOC.horizontal .container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: max-content;
+
+	overflow: hidden;
+	border-radius: var(--autoc-border-radius)
+}
+
+#AuTOC.horizontal .menu-level {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	width: 100%;
+}
+
+#AuTOC.horizontal ul {
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	width: max-content;
+}
+
+#AuTOC.horizontal div div:not(#tagOrder-1) ul {
+	display: none;
+}
+
+#AuTOC.horizontal div div:not(#tagOrder-1) ul.active-parent {
+	display: flex;
+}
+
+#AuTOC.horizontal.links-align-left ul {
+	justify-content: flex-start;
+}
+
+#AuTOC.horizontal.links-align-right ul {
+	justify-content: flex-end;
+}
+
+
+
+/* Links styles */
+#AuTOC ul a {
+	display: inline-block;
+
+	padding: 5px;
+
+	border-radius: var(--autoc-border-radius);
+
+	text-decoration: none;
+	color: var(--autoc-text-color);
+
+	transition: all 0.1s;
+}
+
+#AuTOC.vertical.plain.links-align-center ul a,
+#AuTOC.horizontal.plain {
+	transition: all 0s;
+}
+
+#AuTOC.box ul a {
+	margin: 3px;
+}
+
+#AuTOC.plain ul a {
+	border-radius: 0;
+}
+
+
+#AuTOC.box ul a:hover {
+	box-shadow: 0 0 5px var(--autoc-active-color) !important;
+	
+	transition: all 0.1s;
+}
+
+#AuTOC.vertical.plain.links-align-left ul a:hover {
+	border-left: 5px solid var(--autoc-active-color) !important;
+	padding-left: 5px !important;
+	padding-right: 0px !important;
+	
+	transition: all 0.1s;
+}
+
+#AuTOC.vertical.plain.links-align-right ul a:hover {
+	border-right: 5px solid var(--autoc-active-color) !important;
+	padding-right: 5px !important;
+	padding-left: 0px !important;
+	
+	transition: all 0.1s;
+}
+
+#AuTOC.vertical.plain.links-align-center ul a:hover,
+#AuTOC.horizontal.plain ul a:hover {
+	border-bottom: 5px solid var(--autoc-active-color) !important;
+	padding-bottom: 2px !important;
+	padding-top: 3px !important;
+}
+
+
+
+/* Level colors */
+#AuTOC.box ul li.tagOrder-1 > a,
+#AuTOC.vertical.plain li.tagOrder-1,
+#AuTOC.horizontal.plain #tagOrder-1.menu-level {
+	background-color: color-mix(in oklab, var(--autoc-main-color) 100%, rgb(35, 35, 35));
+	font-size: 1.2em;
+	font-weight: bold;
+}
+#AuTOC.box ul li.tagOrder-2 > a,
+#AuTOC.vertical.plain li.tagOrder-2,
+#AuTOC.horizontal.plain #tagOrder-2.menu-level {
+	background-color: color-mix(in oklab, var(--autoc-main-color) 70%, rgb(35, 35, 35));
+	font-size: 1em;
+}
+#AuTOC.box ul li.tagOrder-3 > a,
+#AuTOC.vertical.plain li.tagOrder-3,
+#AuTOC.horizontal.plain #tagOrder-3.menu-level {
+	background-color: color-mix(in oklab, var(--autoc-main-color) 40%, rgb(35, 35, 35));
+	font-size: 0.8em;
+}
+#AuTOC.box ul li.tagOrder-4 > a,
+#AuTOC.vertical.plain li.tagOrder-4,
+#AuTOC.horizontal.plain #tagOrder-4.menu-level {
+	background-color: color-mix(in oklab, var(--autoc-main-color) 30%, rgb(35, 35, 35));
+	font-size: 0.7em;
+}
+#AuTOC.box ul li.tagOrder-5 > a,
+#AuTOC.vertical.plain li.tagOrder-5,
+#AuTOC.horizontal.plain #tagOrder-5.menu-level {
+	background-color: color-mix(in oklab, var(--autoc-main-color) 20%, rgb(35, 35, 35));
+	font-size: 0.65em;
+}
+#AuTOC.box ul li.tagOrder-6 > a,
+#AuTOC.vertical.plain li.tagOrder-6,
+#AuTOC.horizontal.plain #tagOrder-6.menu-level {
+	background-color: color-mix(in oklab, var(--autoc-main-color) 0%, rgb(35, 35, 35));
+	font-size: 0.6em;
+}
+
+#AuTOC.box ul li.active-parent:not(.active) > a{
+	box-shadow: 0 0 1px 2px var(--autoc-active-color);
+}
+
+#AuTOC.vertical.plain.links-align-left ul li.active-parent > a{
+	border-left: 5px solid var(--autoc-active-color);
+	padding-left: 2px;
+	padding-right: 3px;
+}
+
+#AuTOC.vertical.plain.links-align-right ul li.active-parent > a{
+	border-right: 5px solid var(--autoc-active-color);
+	padding-right: 2px;
+	padding-left: 3px;
+}
+
+#AuTOC.vertical.plain.links-align-center ul li.active-parent > a,
+#AuTOC.horizontal.plain ul li.active-parent > a{
+	border-bottom: 3px solid var(--autoc-active-color);
+	padding-bottom: 2px;
+}
+
+#AuTOC ul li.active > a{
+	background-color: var(--autoc-active-color) !important;
+}

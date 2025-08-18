@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Automatic Table of Content for reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<link rel="stylesheet" href="../plugin/AuTOC/AuTOC.css">
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section><h1>Part 1</h1></section>
+					<section><h2>Part 1.1</h2></section>
+					<section><h3>Part 1.1.1</h3></section>
+					<section><p>Here is the text of the part 1.1.1</p></section>
+					<section><h3>Part 1.1.2</h3></section>
+					<section><p>Here is the text of the part 1.1.2</p></section>
+					<section><h2>Part 1.2</h2></section>
+					<section><h3>Part 1.2.1</h3></section>
+					<section><p>Here is the text of the part 1.2.1</p></section>
+					<section><h3>Part 1.2.2</h3></section>
+					<section><p>Here is the text of the part 1.2.2</p></section>
+				</section>
+				<section>
+					<section><h1>Part 2</h1></section>
+					<section>
+						<h2>Part 2.1</h2>
+						<p>Here is the text of the part 2.1</p>
+						<h2>Part 2.2</h2>
+						<p>Here is the text of the part 2.2</p>
+						<p>The two parts are on the same slide</p>
+					</section>
+				</section>
+				<section>
+					<section><h1>Part 3</h1></section>
+					<section><p>Here is the text of the part 3</p></section>
+					<section><h2>Part 3.1</h2></section>
+					<section><p>Here is the text of the part 3.1</p></section>
+					<section><h2>Part 3.2</h2></section>
+					<section><p>Here is the text of the part 3.2</p></section>
+					<section><p>Here is an other text of the part 3.2</p></section>
+				</section>
+				<section>
+					<section><h1>Part 4</h1></section>
+					<section><p>Here is the text of the part 4</p></section>
+					<section><p>Here is an other text of the part 4</p></section>
+				</section>
+			</div>
+		</div>
+
+
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="../plugin/AuTOC/AuTOC.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				transition: 'fade',
+				backgroundTransition: 'slide',
+				plugins: [ 
+					RevealMarkdown, 
+					RevealHighlight, 
+					RevealNotes,
+					AuTOC
+				],
+				AuTOC: {
+					tagList: 'h1,h2,h3', // DOM elements to use for the table of contents - string of elements separated by comma - default to 'h1,h2,h3'
+					visibleInit: true, // TOC visible at start - boolean - Default to true
+					layout: 'horizontal', // Menu layout - string : 'vertical', 'horizontal' - Default to 'vertical'
+					style: 'plain',  // Menu style - string : 'box', 'plain' - Default to 'box'
+					subAlwaysVisible: false, // in vertical layout, all sub-elements are always displayed - boolean - Default to false
+					horizontalPosition: 'left', // TOC position in the page only when layout = vertical - string : 'left', 'right' - Default to left
+					verticalPosition: 'bottom', // TOC position in the page - string : 'top', 'bottom' - Default to top for layout = vertical and bottom for layout = horizontal
+					linksAlign: 'center', // Links alignment - string : 'left', 'right', 'center' - Default to center
+				}
+			});
+		</script>
+	</body>
+</html>

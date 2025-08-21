@@ -4,6 +4,31 @@
   <p>
     An Automatic Table of Content for your Reveal.js presentations
   </p>
+  <!-- Badges -->
+	<p>
+		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/graphs/contributors">
+			<img src="https://img.shields.io/github/contributors/bazmap/AuTOC-for-Reveal.js" alt="contributors" />
+		</a>
+		<a href="">
+			<img src="https://img.shields.io/github/last-commit/bazmap/AuTOC-for-Reveal.js" alt="last update" />
+		</a>
+	</p>
+	<p>
+		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/network/members">
+			<img src="https://img.shields.io/github/forks/bazmap/AuTOC-for-Reveal.js" alt="forks" />
+		</a>
+		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/stargazers">
+			<img src="https://img.shields.io/github/stars/bazmap/AuTOC-for-Reveal.js" alt="stars" />
+		</a>
+	</p>
+	<p>
+		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/issues/">
+			<img src="https://img.shields.io/github/issues/bazmap/AuTOC-for-Reveal.js" alt="open issues" />
+		</a>
+		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/blob/master/LICENSE">
+			<img src="https://img.shields.io/github/license/bazmap/AuTOC-for-Reveal.js.svg" alt="license" />
+		</a>
+	</p>
 </div>
 
 
@@ -12,30 +37,50 @@
 
 - [📔 Table of Contents](#-table-of-contents)
 - [🌟 What is AuTOC](#-what-is-autoc)
-- [📖 How to use](#-how-to-use)
+- [📖 User documentation](#-user-documentation)
 	- [🚀 Installation](#-installation)
 	- [🧰 Configuration](#-configuration)
-	- [🖌️ Style](#️-style)
-	- [Use](#use)
-- [📝Licence](#licence)
+	- [🎨 Style](#-style)
+	- [⚡️ How to use](#️-how-to-use)
+- [👋 Contributing](#-contributing)
+- [📜 Licence](#-licence)
 
 
 
 ## 🌟 What is AuTOC
-What is it with images
+AuTOC stand for "Automatic Table Of Content". It creates a dynamic TOC into your Reveal.js presentation.  
+It's based on specific elements into the presentation like `h1`, `h2` or `h3` and structured as a menu with clickable elements to jump to a specific part of the presentation.  
+Part of the TOC is highlighted to see the progress.
+
+Vertical - boxed layout :  
+
+![til](./assets/demo_vertical_box.gif)
+
+Vertical - plain layout :  
+
+![til](./assets/vertical_plain.png)
+
+Horizontal - plain layout :  
+
+![til](./assets/demo_horizontal_plain.gif)
+
+Horizontal - boxed layout :  
+
+![til](./assets/horizontal_box.png)
 
 
 
-## 📖 How to use
+## 📖 User documentation
 ### 🚀 Installation
-Copy the `plugin\AuTOC` directory content from this repository into the `plugin\AuTOC` directory of your Reveal.js presentation.
+Follow these 3 simple steps :
+1. Copy the `plugin\AuTOC` directory content from this repository into the `plugin\AuTOC` directory of your Reveal.js presentation.
 
-Include the script into your presentation file :
+2. Include the script into your presentation file :
 ```html
 <script src="/plugin/AuTOC/AuTOC.js"></script>
 ```
 
-Include the plugin into the `Reveal.initialize` :
+3. Include the plugin into the `Reveal.initialize` :
 ```javascript
 Reveal.initialize({
 	plugins: [ 
@@ -46,7 +91,8 @@ Reveal.initialize({
 
 
 ### 🧰 Configuration
-To change the configuration, add the AuTOC key into the `Reveal.initialize` :
+AuTOC support multiple parameter to change the layout.  
+Just add the `AuTOC` key into the `Reveal.initialize` :
 ```javascript
 Reveal.initialize({
 	plugins: [ 
@@ -96,7 +142,7 @@ The following parameters can be used :
 
 
 
-### 🖌️ Style
+### 🎨 Style
 CSS can be modify, thoses variables are used :
 
 ```css
@@ -110,7 +156,7 @@ CSS can be modify, thoses variables are used :
 }
 ```
 
-Colors are defined up to 6 level of depth. If you want to define more or redefine, use these selectors (here for level 1, just change the level number) :
+Colors are defined up to 6 level of depth. If you want to define more or redefine it, use these selectors (here for level 1, just change the level number) :
 
 ```css
 #AuTOC.box ul li.tagOrder-1 > a,
@@ -123,12 +169,31 @@ Colors are defined up to 6 level of depth. If you want to define more or redefin
 ```
 
 
-### Use
-To use the plugin, just follow your presentation
-Pressing the q key causes the Reveal.js-TOC-Progress footer to disappear. Pressing the q key again creates it again.
+### ⚡️ How to use
+To use the plugin, just follow your presentation, the part displayed will be highlighted.
+You can click on an item to jump to the linked part.
+
+> [!TIP]
+> Press the `a` key to disable/enable the AuTOC.
 
 
-## 📝Licence
+## 👋 Contributing
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
+
+> [!IMPORTANT]
+> For major changes, please open an issue first to discuss what you would like to change.
+
+🧑‍💻 to install your environment, you can use Docker 🐳
+1. Clone this repository
+2. Run `docker compose up --build`
+3. Connect to `http://localhost:8000`
+
+All modifications can be done into `plugin/AuTOC`.
+
+
+## 📜 Licence
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)  
 More info in the [associated file](licence)
 

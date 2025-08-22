@@ -79,14 +79,32 @@
 					AuTOC
 				],
 				AuTOC: {
-					tagList: 'h1,h2,h3', // DOM elements to use for the table of contents - string of elements separated by comma - default to 'h1,h2,h3'
-					visibleInit: true, // TOC visible at start - boolean - Default to true
-					layout: 'vertical', // Menu layout - string : 'vertical', 'horizontal' - Default to 'vertical'
-					style: 'box',  // Menu style - string : 'box', 'plain' - Default to 'box'
-					subAlwaysVisible: false, // in vertical layout, all sub-elements are always displayed - boolean - Default to false
-					horizontalPosition: 'left', // TOC position in the page only when layout = vertical - string : 'left', 'right' - Default to left
-					verticalPosition: 'bottom', // TOC position in the page - string : 'top', 'bottom' - Default to top for layout = vertical and bottom for layout = horizontal
-					linksAlign: 'center', // Links alignment - string : 'left', 'right', 'center' - Default to center
+					tagList: 'h1,h2,h3', // string
+					// DOM elements to use for the table of contents
+					// String of elements separated by comma 
+					// The element order dertemine the hierarchy
+					// Default to 'h1,h2,h3'
+					visibleInit: true, // boolean
+					// TOC visible at start
+					// Default to true
+					layout: 'vertical', // string
+					// Menu layout : 'vertical', 'horizontal'
+					// Default to 'vertical'
+					style: 'box', // string
+					// Menu style : 'box', 'plain'
+					// Default to 'box'
+					subAlwaysVisible: false, // boolean
+					// In vertical layout only, all sub-elements are always displayed
+					// Default to false
+					horizontalPosition: 'left', // string
+					// In vertical layout only, TOC position in the page : 'left', 'right'
+					// Default to left
+					verticalPosition: 'top', // string
+					// TOC position in the page : 'top', 'bottom'
+					// Default to top for layout = vertical and bottom for layout = horizontal
+					linksAlign: 'center', // string
+					// Links alignment : 'left', 'right', 'center'
+					// Default to center
 				}
 			});
 		</script>

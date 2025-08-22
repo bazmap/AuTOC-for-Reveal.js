@@ -6,27 +6,25 @@
   </p>
   <!-- Badges -->
 	<p>
-		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/graphs/contributors">
-			<img src="https://img.shields.io/github/contributors/bazmap/AuTOC-for-Reveal.js" alt="contributors" />
-		</a>
 		<a href="">
 			<img src="https://img.shields.io/github/last-commit/bazmap/AuTOC-for-Reveal.js" alt="last update" />
 		</a>
+		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/graphs/contributors">
+			<img src="https://img.shields.io/github/contributors/bazmap/AuTOC-for-Reveal.js" alt="contributors" />
+		</a>
+		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/issues/">
+			<img src="https://img.shields.io/github/issues/bazmap/AuTOC-for-Reveal.js" alt="open issues" />
+		</a>
 	</p>
 	<p>
+		<a href="licence.md">
+			<img src="https://img.shields.io/badge/License-CC--BY--SA_4.0-blue.svg" alt="license" /> 
+		</a>
 		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/network/members">
 			<img src="https://img.shields.io/github/forks/bazmap/AuTOC-for-Reveal.js" alt="forks" />
 		</a>
 		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/stargazers">
 			<img src="https://img.shields.io/github/stars/bazmap/AuTOC-for-Reveal.js" alt="stars" />
-		</a>
-	</p>
-	<p>
-		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/issues/">
-			<img src="https://img.shields.io/github/issues/bazmap/AuTOC-for-Reveal.js" alt="open issues" />
-		</a>
-		<a href="https://github.com/bazmap/AuTOC-for-Reveal.js/blob/master/LICENSE">
-			<img src="https://img.shields.io/github/license/bazmap/AuTOC-for-Reveal.js.svg" alt="license" />
 		</a>
 	</p>
 </div>
@@ -49,8 +47,8 @@
 
 ## 🌟 What is AuTOC
 AuTOC stand for "Automatic Table Of Content". It creates a dynamic TOC into your Reveal.js presentation.  
-It's based on specific elements into the presentation like `h1`, `h2` or `h3` and structured as a menu with clickable elements to jump to a specific part of the presentation.  
-Part of the TOC is highlighted to see the progress.
+It's based on specific elements used into the presentation such as `h1`, `h2` or `h3` and structured as a menu with clickable elements to jump to specific parts.  
+TOC items are highlighted to see the progress.
 
 Vertical - boxed layout :  
 
@@ -88,10 +86,11 @@ Reveal.initialize({
 	]
 });
 ```
+That's it, you should see the AuTOC !
 
 
 ### 🧰 Configuration
-AuTOC support multiple parameter to change the layout.  
+AuTOC support multiple parameters to change the layout.  
 Just add the `AuTOC` key into the `Reveal.initialize` :
 ```javascript
 Reveal.initialize({
@@ -99,14 +98,32 @@ Reveal.initialize({
 		AuTOC
 	],
 	AuTOC: {
-		tagList: 'h1,h2,h3', // DOM elements to use for the table of contents - string of elements separated by comma - default to 'h1,h2,h3'
-		visibleInit: true, // TOC visible at start - boolean - Default to true
-		layout: 'vertical', // Menu layout - string : 'vertical', 'horizontal' - Default to 'vertical'
-		style: 'box',  // Menu style - string : 'box', 'plain' - Default to 'box'
-		subAlwaysVisible: false, // in vertical layout, all sub-elements are always displayed - boolean - Default to false
-		horizontalPosition: 'left', // TOC position in the page only when layout = vertical - string : 'left', 'right' - Default to left
-		verticalPosition: 'bottom', // TOC position in the page - string : 'top', 'bottom' - Default to top for layout = vertical and bottom for layout = horizontal
-		linksAlign: 'center', // Links alignment - string : 'left', 'right', 'center' - Default to center
+		tagList: 'h1,h2,h3', // string
+		// DOM elements to use for the table of contents
+		// String of elements separated by comma 
+		// The element order dertemine the hierarchy
+		// Default to 'h1,h2,h3'
+		visibleInit: true, // boolean
+		// TOC visible at start
+		// Default to true
+		layout: 'vertical', // string
+		// Menu layout : 'vertical', 'horizontal'
+		// Default to 'vertical'
+		style: 'box', // string
+		// Menu style : 'box', 'plain'
+		// Default to 'box'
+		subAlwaysVisible: false, // boolean
+		// In vertical layout only, all sub-elements are always displayed
+		// Default to false
+		horizontalPosition: 'left', // string
+		// In vertical layout only, TOC position in the page : 'left', 'right'
+		// Default to left
+		verticalPosition: 'top', // string
+		// TOC position in the page : 'top', 'bottom'
+		// Default to top for layout = vertical and bottom for layout = horizontal
+		linksAlign: 'center', // string
+		// Links alignment : 'left', 'right', 'center'
+		// Default to center
 	}
 });
 ```
@@ -115,29 +132,30 @@ The following parameters can be used :
 - `tagList` : string 
   - DOM elements to use for the table of contents
   - String of elements separated by comma
+  - The element order dertemine the hierarchy
   - Default to `'h1,h2,h3'`
 - `visibleInit` : boolean
   - TOC visible at start
   - Default to `true`
 - `layout` : string
-  - Menu layout in `'vertical'`, `'horizontal'`
+  - Menu layout : `'vertical'`, `'horizontal'`
   - Default to `'vertical'`
 - `style` : string
-  - Menu style in `'box'`, `'plain'`
+  - Menu style : `'box'`, `'plain'`
   - Default to `'box'`
 - `subAlwaysVisible` : boolean
-  - In vertical layout, all sub-elements are always displayed
+  - In vertical layout only, all sub-elements are always displayed.
   - Default to `false`
 - `horizontalPosition` : string
-  - TOC position in the page only when layout = vertical in `'left'`, `'right'`
+  - In vertical layout only, TOC horizontal position in the page : `'left'`, `'right'`
   - Default to `'left'`
 - `verticalPosition` : string
-  - TOC position in the page - string : `'top'`, `'bottom'`
+  - TOC vertical position in the page : `'top'`, `'bottom'`
   - Default :
     - for layout = vertical : `'top'`
     - for layout = horizontal : `'bottom'`
 - `linksAlign` : string
-  - Links alignment in `'left'`, `'right'`, `'center'` 
+  - Links alignment : `'left'`, `'right'`, `'center'` 
   - Default to `'center'`
 
 
@@ -156,7 +174,7 @@ CSS can be modify, thoses variables are used :
 }
 ```
 
-Colors are defined up to 6 level of depth. If you want to define more or redefine it, use these selectors (here for level 1, just change the level number) :
+Colors are defined up to 6 levels of depth. If you want to define more or redefine it, use these selectors (here for level 1, just change the level number) :
 
 ```css
 #AuTOC.box ul li.tagOrder-1 > a,
@@ -171,7 +189,7 @@ Colors are defined up to 6 level of depth. If you want to define more or redefin
 
 ### ⚡️ How to use
 To use the plugin, just follow your presentation, the part displayed will be highlighted.
-You can click on an item to jump to the linked part.
+You can click on items to jump to the linked part.
 
 > [!TIP]
 > Press the `a` key to disable/enable the AuTOC.
@@ -187,13 +205,12 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 🧑‍💻 to install your environment, you can use Docker 🐳
 1. Clone this repository
-2. Run `docker compose up --build`
+2. Run `docker compose up --build` into the `Docker` directory.
 3. Connect to `http://localhost:8000`
 
-All modifications can be done into `plugin/AuTOC`.
+This will run a node app where all modifications can be done into the `plugin/AuTOC` directory to be seen live.
 
 
 ## 📜 Licence
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)  
 More info in the [associated file](licence.md)
 

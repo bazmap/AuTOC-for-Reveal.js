@@ -1,0 +1,19 @@
+name: autoc-4-reveal
+
+services:
+  reveal-and-autoc:
+    build: .
+    ports:
+      - "8000:8000"
+      - "35729:35729"
+    volumes:
+      # Montage du dossier de plugin TOC
+      - type: bind
+        source: ../plugin/AuTOC
+        target: /reveal/plugin/AuTOC
+      # Montage de l'index.html personnalisé
+      - type: bind
+        source: ../demo/index.html
+        target: /reveal/index.html
+    stdin_open: true
+    tty: true

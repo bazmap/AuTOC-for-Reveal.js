@@ -124,6 +124,9 @@ Reveal.initialize({
 		linksAlign: 'center', // string
 		// Links alignment : 'left', 'right', 'center'
 		// Default to center
+		linksLeftPadded: true, // boolean
+		// In vertical layout only, links have a left padding
+		// Default to true
 	}
 });
 ```
@@ -157,6 +160,9 @@ The following parameters can be used :
 - `linksAlign` : string
   - Links alignment : `'left'`, `'right'`, `'center'` 
   - Default to `'center'`
+- `linksLeftPadded` : boolean
+  - In vertical layout only, links have a left padding 
+  - Default to `true`
 
 
 

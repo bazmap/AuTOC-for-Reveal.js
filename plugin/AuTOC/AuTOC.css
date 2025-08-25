@@ -16,7 +16,7 @@
 
 
 /* TOC position */
-#AuTOC{
+#AuTOC {
 	display:block;
 
 	position: absolute;
@@ -97,6 +97,10 @@
 	display: none;
 }
 
+#AuTOC.vertical.box.links-left-padded > ul ul {
+	padding-left: 10px;
+}
+
 #AuTOC.vertical ul li.active-parent ul {
 	display: flex;
 }
@@ -169,7 +173,7 @@
 
 /* Links styles */
 #AuTOC ul a {
-	display: inline-block;
+	display: block;
 
 	padding: 5px;
 
@@ -179,6 +183,15 @@
 	color: var(--autoc-text-color);
 
 	transition: all 0.1s;
+}
+
+#AuTOC.vertical.plain:not(.links-align-center) ul a {
+	width: 100%;
+}
+
+#AuTOC.vertical.plain.links-left-padded:not(.links-align-center) ul a .marge {
+	display: inline-block;
+	width: 6px;
 }
 
 #AuTOC.vertical.plain.links-align-center ul a,
@@ -269,24 +282,24 @@
 	box-shadow: 0 0 1px 2px var(--autoc-active-color);
 }
 
-#AuTOC.vertical.plain.links-align-left ul li.active-parent > a{
+#AuTOC.vertical.plain.links-align-left ul li.active-parent > a {
 	border-left: 5px solid var(--autoc-active-color);
 	padding-left: 2px;
 	padding-right: 3px;
 }
 
-#AuTOC.vertical.plain.links-align-right ul li.active-parent > a{
+#AuTOC.vertical.plain.links-align-right ul li.active-parent > a {
 	border-right: 5px solid var(--autoc-active-color);
 	padding-right: 2px;
 	padding-left: 3px;
 }
 
 #AuTOC.vertical.plain.links-align-center ul li.active-parent > a,
-#AuTOC.horizontal.plain ul li.active-parent > a{
+#AuTOC.horizontal.plain ul li.active-parent > a {
 	border-bottom: 3px solid var(--autoc-active-color);
 	padding-bottom: 2px;
 }
 
-#AuTOC ul li.active > a{
+#AuTOC ul li.active > a {
 	background-color: var(--autoc-active-color) !important;
 }

@@ -30,6 +30,7 @@ AuTOC.init = function(deck) {
 	this.horizontalPosition = config.horizontalPosition || 'left'; // TOC position in the page - string : 'left', 'right' - Default to left
 	this.verticalPosition = config.verticalPosition || 'top'; // TOC position in the page - string : 'top', 'bottom' - Default to top
 	this.linksAlign = config.linksAlign || 'center'; // Links alignment - string : 'left', 'right', 'center' - Default to center
+	this.linksLeftPadded = config.linksLeftPadded ?? true; // In vertical layout only, Links have a left padding - Default to true
 
 	this.tagList = (config.tagList || 'h1,h2,h3') // DOM elements to use for the table of contents - string of elements separated by comma - default to 'h1,h2,h3'
 		.split(',')
@@ -201,7 +202,12 @@ AuTOC.generateHTMLVerticalList = function(items = this.titleHierarchy) {
 
 		const a = document.createElement('a');
 		a.href = `#/${item.indices.h}/${item.indices.v}`;
-		a.textContent = item.html;
+		for (let i = 2; i <= item.tagOrder; i++) {
+			const span = document.createElement('span')
+			span.classList.add('marge')
+			a.appendChild(span)
+		}
+		a.insertAdjacentHTML('beforeend', item.html);
 		li.appendChild(a);
 
 
@@ -283,7 +289,7 @@ AuTOC.generateHTMLHorizontalList = function() {
 
 				const a = document.createElement('a');
 				a.href = `#/${child.indices.h}/${child.indices.v}`;
-				a.innerHTML = child.html;
+				a.insertAdjacentHTML('beforeend', child.html);
 				li.appendChild(a);
 
 				ul.appendChild(li);
@@ -340,6 +346,10 @@ AuTOC.addTOC = function(HTMLContent, deck) {
 		tocContainer.classList.add('links-align-left');
 	} else {
 		tocContainer.classList.add('links-align-center');
+	};
+
+	if (this.linksLeftPadded) {
+		tocContainer.classList.add('links-left-padded');
 	};
 
 	if (this.horizontalPosition === 'right') {

@@ -48,7 +48,7 @@ AuTOC.init = function(deck) {
 	// Use hard-coded string as fallback.
 	var path="plugin/AuTOC/AuTOC.css";
 	var script;
-	if (document.currentScript.src) {
+	if (document.currentScript && document.currentScript.src) {
 		script = document.currentScript;
 	} else {
 		script = document.querySelector('script[src$="/AuTOC.js"]');
@@ -491,7 +491,7 @@ AuTOC.activeElement = function(deck, indexh, indexv) {
 
 		if (/^\d+$/.test(parentId)) {
 			selectors.push(`.parent-id-${parentId}`);
-		} else {
+		} else if (parentId) {
 			
 			const idParts = parentId.split('-');
 

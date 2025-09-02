@@ -48,7 +48,7 @@ AuTOC.init = function(deck) {
 	// Use hard-coded string as fallback.
 	var path="plugin/AuTOC/AuTOC.css";
 	var script;
-	if (document.currentScript) {
+	if (document.currentScript.src) {
 		script = document.currentScript;
 	} else {
 		script = document.querySelector('script[src$="/AuTOC.js"]');

@@ -12,7 +12,7 @@
 
 /* AuTOC object */
 
-var AuTOC = {
+const AuTOC = {
 	id: 'AuTOC'
 };
 
@@ -46,8 +46,8 @@ AuTOC.init = function(deck) {
 	// CSS
 	// Try to determine path to CSS by replacing "js" with "css".
 	// Use hard-coded string as fallback.
-	var path="plugin/AuTOC/AuTOC.css";
-	var script;
+	let path="plugin/AuTOC/AuTOC.css";
+	let script;
 	if (document.currentScript && document.currentScript.src) {
 		script = document.currentScript;
 	} else {
@@ -57,7 +57,7 @@ AuTOC.init = function(deck) {
 		path = script.src.slice(0, -2) + "css";
 	}
 
-	var link=document.createElement("link");
+	const link=document.createElement("link");
 	link.href=path;
 	link.type="text/css";
 	link.rel="stylesheet";
@@ -146,8 +146,8 @@ AuTOC.buildHierarchy = function() {
 	const items = this.titleList;
 	const root = [];
 	const parents = {};
-	var id = 1;
-	var childId = 1;
+	let id = 1;
+	let childId = 1;
 
 	items.forEach(item => {
 		const node = { ...item, children: [], parent_id: id };
@@ -313,8 +313,13 @@ AuTOC.addTOC = function(HTMLContent, deck) {
 
 	// TOC Container
 	const tocContainer = document.createElement('div');
-	tocContainer.id = 'AuTOC';
+	tocContainer.classList.add('AuTOC');
 	tocContainer.classList.add(this.layout);
+
+	randomId = Math.floor(Math.random() * 0x10000)
+		.toString(16)
+		.padStart(4, "0");
+	tocContainer.id = 'AuTOC_'+randomId;
 
 	if (this.style === 'plain') {
 		tocContainer.classList.add('plain');
@@ -372,13 +377,13 @@ AuTOC.addTOC = function(HTMLContent, deck) {
 		this.activeElement(deck, deck.getIndices().h, deck.getIndices().v);
 	});
 
-}
+};
 
 
 
 // Toggle the display of the TOC element
 AuTOC.toggle = function() {
-	const toc = document.getElementById('AuTOC');
+	const toc = document.querySelector('.AuTOC');
 
 	if (
 		toc.style.display === 'none'
@@ -409,11 +414,11 @@ AuTOC.activeElement = function(deck, indexh, indexv) {
 
 
 	// Remove active classes from all elements
-	deck.getRevealElement().querySelectorAll('#AuTOC li').forEach(liElement => {
+	deck.getRevealElement().querySelectorAll('.AuTOC li').forEach(liElement => {
 		liElement.classList.remove('active');
 		liElement.classList.remove('active-parent');
 	});
-	deck.getRevealElement().querySelectorAll('#AuTOC ul').forEach(ulElement => {
+	deck.getRevealElement().querySelectorAll('.AuTOC ul').forEach(ulElement => {
 		ulElement.classList.remove('active');
 		ulElement.classList.remove('active-parent');
 	});
@@ -421,7 +426,7 @@ AuTOC.activeElement = function(deck, indexh, indexv) {
 
 
 	// Add the active class of all links that points for the same slide
-	deck.getRevealElement().querySelectorAll(`#AuTOC ul li.indice-h-${indexh}.indice-v-${indexv}`).forEach(liElement => {
+	deck.getRevealElement().querySelectorAll(`.AuTOC ul li.indice-h-${indexh}.indice-v-${indexv}`).forEach(liElement => {
 		liElement.classList.add('active');
 	});
 
@@ -454,8 +459,8 @@ AuTOC.activeElement = function(deck, indexh, indexv) {
 
 
 	// Add the active class to the parent elements
-	if (deck.getRevealElement().querySelector('#AuTOC ul li.parent-id-'+parentId)) {
-		deck.getRevealElement().querySelector('#AuTOC ul li.parent-id-'+parentId).classList.add('active');
+	if (deck.getRevealElement().querySelector('.AuTOC ul li.parent-id-'+parentId)) {
+		deck.getRevealElement().querySelector('.AuTOC ul li.parent-id-'+parentId).classList.add('active');
 	};
 
 
@@ -478,7 +483,7 @@ AuTOC.activeElement = function(deck, indexh, indexv) {
 
 		// Get all ancestors
 		const liFamillyChain = getLiWithParents(
-			deck.getRevealElement().querySelector('#AuTOC ul li.parent-id-'+parentId)
+			deck.getRevealElement().querySelector('.AuTOC ul li.parent-id-'+parentId)
 		);
 
 		liFamillyChain.forEach(liElement => {

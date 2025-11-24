@@ -513,10 +513,12 @@ AuTOC.activeElement = function(deck, indexh, indexv) {
 			}
 		};
 
-		// On sélectionne tous les éléments correspondants
-		const elements = deck.getRevealElement().querySelectorAll(selectors.join(', ')).forEach(liElement => {
-			liElement.classList.add('active-parent');
-		});
+		// Get corresponding elements
+		if (selectors.length > 0) {
+			const elements = deck.getRevealElement().querySelectorAll(selectors.join(', ')).forEach(liElement => {
+				liElement.classList.add('active-parent');
+			});
+		};
 	};
 
 };

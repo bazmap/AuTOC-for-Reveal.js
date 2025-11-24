@@ -46,15 +46,22 @@ AuTOC.init = function(deck) {
 	// CSS
 	// Try to determine path to CSS by replacing "js" with "css".
 	// Use hard-coded string as fallback.
-	let path="plugin/AuTOC/AuTOC.css";
-	let script;
-	if (document.currentScript && document.currentScript.src) {
-		script = document.currentScript;
-	} else {
-		script = document.querySelector('script[src$="/AuTOC.js"]');
-	}
-	if (script) {
-		path = script.src.slice(0, -2) + "css";
+	var path = "/plugin/AuTOC/AuTOC.css";
+
+	var script =
+		document.currentScript ||
+		document.querySelector('script[src*="AuTOC.js"]');
+
+	
+	// Sinon chercher par l'URL absolue
+	if (!script.src) {
+		var scripts = document.getElementsByTagName('script');
+		for (var i = 0; i < scripts.length; i++) {
+			if (scripts[i].src && scripts[i].src.endsWith('/AuTOC.js')) {
+				script = scripts[i];
+				break;
+			}
+		}
 	}
 
 	const link=document.createElement("link");

@@ -4,7 +4,7 @@ services:
   reveal-and-autoc:
     build: .
     ports:
-      - "8000:8000"
+      - "8080:8000"
       - "35729:35729"
     volumes:
       # Montage du dossier de plugin TOC

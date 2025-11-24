@@ -13,7 +13,7 @@ RUN git clone https://github.com/janschoepke/reveal_external.git /tmp/reveal_ext
     && rm -rf /tmp/reveal_external
 
 # Exposer les ports
-EXPOSE 8000
+EXPOSE 8080
 EXPOSE 35729
 
 # Lancer npm

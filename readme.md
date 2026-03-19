@@ -211,8 +211,9 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 🧑‍💻 to install your environment, you can use Docker 🐳
 1. Clone this repository
-2. Run `docker compose up --build` into the `Docker` directory.
-3. Connect to `http://localhost:8000`
+2. Change the `.env` file into the `Docker` directory according to your preferences (project name for Docker, host and port for your browser).
+3. Run `docker compose build --no-cache` then `docker compose up -d` into the `Docker` directory.
+4. Connect to `http://127.0.0.101` (or other, depending on your .env file)
 
 This will run a node app where all modifications can be done into the `plugin/AuTOC` directory to be seen live.
 

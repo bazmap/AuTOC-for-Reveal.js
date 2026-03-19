@@ -1,11 +1,20 @@
-name: autoc-4-reveal
+name: ${COMPOSE_PROJECT_NAME}
 
 services:
-  reveal-and-autoc:
-    build: .
-    ports:
-      - "8080:8000"
-      - "35729:35729"
+  reveal:
+    container_name: ${COMPOSE_PROJECT_NAME}_reveal
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports: 
+      - name: web_locahost
+        target: 8000
+        host_ip: ${HOST_IP:-0.0.0.0}
+        published: ${HOST_PORT:-8000}
+      - name: web_locahost
+        target: 35729
+        host_ip: ${HOST_IP:-0.0.0.0}
+        published: 35729
     volumes:
       # Montage du dossier de plugin TOC
       - type: bind

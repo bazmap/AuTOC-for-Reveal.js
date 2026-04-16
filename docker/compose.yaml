@@ -4,8 +4,9 @@ services:
   reveal:
     container_name: ${COMPOSE_PROJECT_NAME}_reveal
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
+    image: autoc-4-reveal-demo
     ports: 
       - name: web_locahost
         target: 8000
